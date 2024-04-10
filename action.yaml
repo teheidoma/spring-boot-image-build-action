@@ -9,7 +9,7 @@ inputs:
     required: true
     default: '22-graal'
 outputs:
-  image_name:
+  tag:
     description: 'image name'
   image_tag:
     description: 'image tag'
