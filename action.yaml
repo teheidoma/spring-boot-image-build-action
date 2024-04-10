@@ -1,0 +1,17 @@
+name: 'Spring boot image build'
+description: ''
+inputs:
+  gradle-dist:
+    description: "Gradle distribution"
+    required: true
+    default: '8.7'
+  jdk-dist:
+    description: "JDK distribution"
+    required: true
+    default: '22-graal'
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.java-dist }}
+    - ${{ inputs.gradle-dist }}
