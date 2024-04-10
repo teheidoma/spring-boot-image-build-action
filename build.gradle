@@ -15,6 +15,10 @@ repositories {
     mavenCentral()
 }
 
+bootBuildImage {
+    imageName = 'registry.reachhold.com/test:${project.version}'
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
