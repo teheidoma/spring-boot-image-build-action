@@ -13,7 +13,7 @@ SDKMAN_DIR={sdkman_dir}; source {sdkman_init_script} \\
 && sdk install java {input_jdk_dist}\"
 """, shell=True)
 subprocess.run(["chmod", "+x", "./gradlew"])
-process = subprocess.run(["./gradlew", "bootBuildImage"], stdout=subprocess.PIPE, text=True)
+process = subprocess.run(["JAVA_HOME=/home/pdys/.sdkman/candidates/java/current;", "./gradlew", "bootBuildImage"], stdout=subprocess.PIPE, text=True)
 
 # Get output and print
 output = process.stdout
