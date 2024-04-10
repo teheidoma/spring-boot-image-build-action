@@ -2,6 +2,11 @@ import re
 import subprocess
 import os
 
+def run_and_print_output(arg):
+    p = subprocess.run(arg, stdout=subprocess.PIPE, text=True)
+    print(p.stdout)
+
+
 sdkman_dir = "/root/.sdkman"
 sdkman_init_script = "/root/.sdkman/bin/sdkman-init.sh"
 #
@@ -23,7 +28,6 @@ process = subprocess.run(["./gradlew", "bootBuildImage"],
                          env=dict(os.environ) | {"JAVA_HOME": "/root/.sdkman/candidates/java/current"},
                          stdout=subprocess.PIPE, text=True)
 
-# Get output and print
 output = process.stdout
 print(output)
 
@@ -36,14 +40,14 @@ else:
     exit(1)
 
 if registry_username and registry_password:
-    subprocess.run(["docker", "login", "-u", registry_username, "-p", registry_password, registry_hostname])
+    run_and_print_output(["docker", "login", "-u", registry_username, "-p", registry_password, registry_hostname])
 
 if include_commit_sha.lower() == 'true':
-    subprocess.run(["docker", "tag", f'{image_name}:{image_tag}', f'{image_name}:{image_tag}-{github_sha}'])
+    run_and_print_output(["docker", "tag", f'{image_name}:{image_tag}', f'{image_name}:{image_tag}-{github_sha}'])
     image_tag = f'{image_tag}:{github_sha}'
 
 with open(github_output_file, "a") as output_file:
     output_file.write(f"IMAGE_NAME={image_name}\n")
     output_file.write(f"IMAGE_TAG={image_tag}\n")
 
-subprocess.run(["docker", "push", f"{image_name}:{image_tag}"])
+run_and_print_output(["docker", "push", f"{image_name}:{image_tag}"])
