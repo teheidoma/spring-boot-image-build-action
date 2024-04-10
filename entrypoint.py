@@ -11,7 +11,7 @@ github_output_file = os.environ.get("GITHUB_OUTPUT")
 subprocess.run(f"""bash -c \"\\
 SDKMAN_DIR={sdkman_dir}; source {sdkman_init_script} \\
 && sdk install java {input_jdk_dist} \\
-""", shell=True)
+\"""", shell=True)
 subprocess.run(["chmod", "+x", "./gradlew"])
 process = subprocess.run(["./gradlew", "bootBuildImage"], stdout=subprocess.PIPE, text=True)
 
