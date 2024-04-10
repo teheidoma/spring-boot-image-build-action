@@ -13,3 +13,6 @@ jobs:
     - uses: ./
       with:
         jdk_dist: '17.0.10-graal'
+        registry_username: dima
+        registry_password: ${{ secrets.REGISTRY_PASSWORD }}
+        registry_hostname: registry.reachhold.com

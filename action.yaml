@@ -8,6 +8,13 @@ inputs:
     description: "JDK distribution"
     required: true
     default: '22-graal'
+  registry_username:
+    description: 'registry username'
+  registry_password:
+    description: 'registry password'
+  registry_hostname:
+    description: 'registry hostname'
+    default: 'docker.io'
 outputs:
   tag:
     description: 'image name'
