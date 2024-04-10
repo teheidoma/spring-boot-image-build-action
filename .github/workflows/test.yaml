@@ -16,3 +16,4 @@ jobs:
         registry_username: dima
         registry_password: ${{ secrets.REGISTRY_PASSWORD }}
         registry_hostname: registry.reachhold.com
+        include_commit_sha: true
