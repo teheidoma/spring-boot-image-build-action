@@ -1,0 +1,7 @@
+FROM ubuntu
+
+LABEL org.opencontainers.image.source="https://github.com/teheidoma/spring-boot-image-build-action"
+
+RUN apt update \
+    && apt install -y bash curl git zip docker.io \
+    && curl -s "https://get.sdkman.io" | bash

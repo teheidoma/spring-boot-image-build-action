@@ -1,8 +1,4 @@
-FROM ubuntu
-
-RUN apt update \
-    && apt install -y bash curl git zip docker.io \
-    && curl -s "https://get.sdkman.io" | bash
+FROM spring-boot-image-build-action:0.0.2
 
 COPY entrypoint.sh /entrypoint.sh
 
