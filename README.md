@@ -10,12 +10,6 @@ This action will build your spring application via 'bootBuildImage' and publish 
 Aviable jdks you can find here https://sdkman.io/jdks or using `sdk ls java`
 Default `22-graal`.
 
-## Outputs
-
-## `time`
-
-The time we greeted you.
-
 ## Example usage
 
 ```yaml
@@ -25,6 +19,7 @@ jobs:
     name: test
     steps:
       - uses: actions/checkout@v4
-      - name: Hello world action step
-        uses: ./
+      - name: Spring boot image build
+        uses: teheidoma/spring-boot-image-build-action@0.0.2
+
 ```
