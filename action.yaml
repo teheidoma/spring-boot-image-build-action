@@ -5,6 +5,11 @@ inputs:
     description: "JDK distribution"
     required: true
     default: '22-graal'
+outputs:
+  image-name:
+    description: 'image name'
+  image-tag:
+    description: 'image tag'
 runs:
   using: docker
   image: Dockerfile
