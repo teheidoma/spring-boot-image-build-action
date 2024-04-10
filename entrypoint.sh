@@ -1,9 +1,6 @@
 #!/bin/bash
 
-ls
-ls /root
-ls /root/.sdkman/bin
-cat /root/.sdkman/bin/sdkman-init.sh
+SDKMAN_DIR=/root/.sdkman
 source /root/.sdkman/bin/sdkman-init.sh
 sdk install java $1
 sdk install gradle $2
