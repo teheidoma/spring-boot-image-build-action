@@ -1,5 +1,8 @@
 name: 'Spring boot image build'
-description: ''
+branding:
+  icon: arrow-up-circle
+  color: green
+description: "This action will build your spring application via 'bootBuildImage' and publish it ! hooray"
 inputs:
   jdk_dist:
     description: "JDK distribution"
