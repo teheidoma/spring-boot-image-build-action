@@ -15,6 +15,9 @@ inputs:
   registry_hostname:
     description: 'registry hostname'
     default: 'docker.io'
+  include_commit_sha:
+    description: 'include commit SHA to image tag'
+    default: 'false'
 outputs:
   tag:
     description: 'image name'

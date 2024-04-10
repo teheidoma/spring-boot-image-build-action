@@ -11,6 +11,8 @@ github_output_file = os.environ.get("GITHUB_OUTPUT")
 registry_username = os.environ.get("INPUT_REGISTRY_USERNAME")
 registry_password = os.environ.get("INPUT_REGISTRY_PASSWORD")
 registry_hostname = os.environ.get("INPUT_REGISTRY_HOSTNAME")
+include_commit_sha = os.environ.get("INPUT_INCLUDE_COMMIT_SHA")
+github_sha = os.environ.get("GITHUB_SHA")
 
 subprocess.run(f"""bash -c \"\\
 SDKMAN_DIR={sdkman_dir}; source {sdkman_init_script} \\
@@ -35,6 +37,10 @@ else:
 
 if registry_username and registry_password:
     subprocess.run(["docker", "login", "-u", registry_username, "-p", registry_password, registry_hostname])
+
+if include_commit_sha.lower() == 'true':
+    subprocess.run(["docker", "tag", f'{image_name}:{image_tag}', f'{image_name}:{image_tag}-{github_sha}'])
+    image_tag = f'{image_tag}:{github_sha}'
 
 with open(github_output_file, "a") as output_file:
     output_file.write(f"IMAGE_NAME={image_name}\n")
