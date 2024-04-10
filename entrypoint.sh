@@ -2,7 +2,7 @@
 
 SDKMAN_DIR=/root/.sdkman
 source /root/.sdkman/bin/sdkman-init.sh
-sdk install java $INPUT_JDK-DIST
+sdk install java $INPUT_JDK_DIST
 chmod +x ./gradlew
 ./gradlew bootBuildImage > log
 cat log

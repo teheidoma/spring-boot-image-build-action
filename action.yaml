@@ -1,17 +1,17 @@
 name: 'Spring boot image build'
 description: ''
 inputs:
-  jdk-dist:
+  jdk_dist:
     description: "JDK distribution"
     required: true
     default: '22-graal'
 outputs:
-  image-name:
+  image_name:
     description: 'image name'
-  image-tag:
+  image_tag:
     description: 'image tag'
 runs:
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.java-dist }}
+    - ${{ inputs.jdk_dist }}
