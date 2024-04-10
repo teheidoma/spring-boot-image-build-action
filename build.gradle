@@ -16,7 +16,7 @@ repositories {
 }
 
 bootBuildImage {
-    imageName = 'registry.reachhold.com/test:${project.version}'
+    imageName = "registry.reachhold.com/test:${project.version}"
 }
 
 dependencies {
