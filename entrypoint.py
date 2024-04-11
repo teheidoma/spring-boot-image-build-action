@@ -20,7 +20,7 @@ registry_username = os.environ.get("INPUT_REGISTRY_USERNAME")
 registry_password = os.environ.get("INPUT_REGISTRY_PASSWORD")
 registry_hostname = os.environ.get("INPUT_REGISTRY_HOSTNAME")
 include_commit_sha = os.environ.get("INPUT_INCLUDE_COMMIT_SHA")
-github_sha = os.environ.get("GITHUB_SHA")
+github_sha = os.environ.get("GITHUB_SHA")[:10]
 
 subprocess.run(f"""bash -c \"\\
 SDKMAN_DIR={sdkman_dir}; source {sdkman_init_script} \\
