@@ -6,6 +6,8 @@ def run_and_print_output(arg):
     print(arg)
     p = subprocess.run(arg, stdout=subprocess.PIPE, text=True)
     print(p.stdout)
+    if p.returncode != 0:
+        exit(p.returncode)
 
 
 sdkman_dir = "/root/.sdkman"
