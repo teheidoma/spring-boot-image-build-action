@@ -4,8 +4,8 @@ import os
 
 def run_and_print_output(arg):
     if type(arg) == type([]):
-        arg = ''.join(arg)
-    print(arg)
+        print(''.join(arg))
+
     p = subprocess.run(arg, stdout=subprocess.PIPE, text=True)
     print(p.stdout)
     if p.returncode != 0:
