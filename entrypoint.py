@@ -2,6 +2,7 @@ import re
 import subprocess
 import os
 
+
 def run_and_print_output(arg):
     if type(arg) == type([]):
         print(' '.join(arg))
@@ -49,7 +50,7 @@ if registry_username and registry_password:
 if include_commit_sha.lower() == 'true':
     original_image = f'{image_name}:{image_tag}'
     modified_image = f'{image_name}:{image_tag}-{github_sha}'
-    run_and_print_output(f"docker tag {original_image} {modified_image}")
+    run_and_print_output(['docker', 'tag', original_image, modified_image])
     image_tag = f'{image_tag}:{github_sha}'
 
 with open(github_output_file, "a") as output_file:
