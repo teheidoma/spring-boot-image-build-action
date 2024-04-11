@@ -5,6 +5,7 @@ import os
 def run_and_print_output(arg):
     if type(arg) == type([]):
         arg = ''.join(arg)
+    print(arg)
     p = subprocess.run(arg, stdout=subprocess.PIPE, text=True)
     print(p.stdout)
     if p.returncode != 0:
@@ -13,10 +14,9 @@ def run_and_print_output(arg):
 
 sdkman_dir = "/root/.sdkman"
 sdkman_init_script = "/root/.sdkman/bin/sdkman-init.sh"
-#
+
 input_jdk_dist = os.environ.get("INPUT_JDK_DIST")
 github_output_file = os.environ.get("GITHUB_OUTPUT")
-
 registry_username = os.environ.get("INPUT_REGISTRY_USERNAME")
 registry_password = os.environ.get("INPUT_REGISTRY_PASSWORD")
 registry_hostname = os.environ.get("INPUT_REGISTRY_HOSTNAME")
