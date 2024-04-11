@@ -43,6 +43,7 @@ if registry_username and registry_password:
     run_and_print_output(["docker", "login", "-u", registry_username, "-p", registry_password, registry_hostname])
 
 if include_commit_sha.lower() == 'true':
+    print(f'tag image {image_name}:{image_tag} to {image_name}:{image_tag}-{github_sha}')
     run_and_print_output(["docker", "tag", f'{image_name}:{image_tag}', f'{image_name}:{image_tag}-{github_sha}'])
     image_tag = f'{image_tag}:{github_sha}'
 
