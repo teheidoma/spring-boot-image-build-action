@@ -1,5 +1,5 @@
-FROM ghcr.io/teheidoma/spring-boot-image-build-action:0.0.2
+FROM ghcr.io/teheidoma/spring-boot-image-build-action:0.0.3
 
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.py /entrypoint.py
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["python3", "/entrypoint.py"]

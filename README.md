@@ -14,12 +14,15 @@ Default `22-graal`.
 
 ```yaml
 jobs:
-  build-and-deploy:
+  test:
     runs-on: ubuntu-latest
-    name: test
     steps:
       - uses: actions/checkout@v4
-      - name: Spring boot image build
-        uses: teheidoma/spring-boot-image-build-action@0.0.2
-
+      - uses: ./
+        with:
+          jdk_dist: '17.0.10-graal'
+          registry_username: ${{ secrets.REGISTRY_USERNAME }}
+          registry_password: ${{ secrets.REGISTRY_PASSWORD }}
+          registry_hostname: ${{ secrets.REGISTRY_HOSTNAME }}
+          include_commit_sha: true
 ```

@@ -8,8 +8,18 @@ inputs:
     description: "JDK distribution"
     required: true
     default: '22-graal'
+  registry_username:
+    description: 'registry username'
+  registry_password:
+    description: 'registry password'
+  registry_hostname:
+    description: 'registry hostname'
+    default: 'docker.io'
+  include_commit_sha:
+    description: 'include commit SHA to image tag'
+    default: 'false'
 outputs:
-  image_name:
+  tag:
     description: 'image name'
   image_tag:
     description: 'image tag'
