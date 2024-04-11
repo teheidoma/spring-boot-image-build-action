@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./
+      - uses: teheidoma/spring-boot-image-build-action@0.0.3
         with:
           jdk_dist: '17.0.10-graal'
           registry_username: ${{ secrets.REGISTRY_USERNAME }}
