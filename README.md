@@ -6,7 +6,7 @@ This action builds your Spring application using 'bootBuildImage' and publishes 
 
 ## Inputs
 
-- `jdk_dist` (required): JDK distribution. Default is '22-graal'.
+- `jdk_dist` (required): JDK distribution used to build the image, obtained from SDKMAN. Available JDKs can be found [here](https://sdkman.io/jdks) or by using `sdk ls java`. Default is '22-graal'.
 - `registry_username`: Registry username.
 - `registry_password`: Registry password.
 - `registry_hostname`: Registry hostname. Default is 'docker.io'.
