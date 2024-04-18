@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build Spring Boot Image
         id: build
-        uses: username/repo-name@v1
+        uses: teheidoma/spring-boot-image-build-action@0.0.3
         with:
           jdk_dist: '17.0.10-graal'
           registry_username: ${{ secrets.REGISTRY_USERNAME }}
