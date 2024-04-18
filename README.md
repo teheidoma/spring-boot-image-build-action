@@ -1,28 +1,46 @@
-# Spring boot image build action
+# Spring Boot Image Build Action
 
-This action will build your spring application via 'bootBuildImage' and publish it ! hooray
+![Spring Boot Image Build Action](https://img.shields.io/badge/Spring%20Boot%20Image%20Build-green?logo=arrow-up-circle)
+
+This action builds your Spring application using 'bootBuildImage' and publishes it.
 
 ## Inputs
 
-## `jdk-dist`
+- `jdk_dist` (required): JDK distribution. Default is '22-graal'.
+- `registry_username`: Registry username.
+- `registry_password`: Registry password.
+- `registry_hostname`: Registry hostname. Default is 'docker.io'.
+- `include_commit_sha`: Include commit SHA to image tag. Default is 'false'.
 
-**Required** Jdk dist used to build an image, obtained from SDKMAN.
-Aviable jdks you can find here https://sdkman.io/jdks or using `sdk ls java`
-Default `22-graal`.
+## Outputs
 
-## Example usage
+- `tag`: Image name.
+- `image_tag`: Image tag.
+
+## Example Usage
 
 ```yaml
+name: Build and Publish Spring Boot Image
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: teheidoma/spring-boot-image-build-action@0.0.3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build Spring Boot Image
+        id: build
+        uses: username/repo-name@v1
         with:
           jdk_dist: '17.0.10-graal'
           registry_username: ${{ secrets.REGISTRY_USERNAME }}
           registry_password: ${{ secrets.REGISTRY_PASSWORD }}
-          registry_hostname: ${{ secrets.REGISTRY_HOSTNAME }}
-          include_commit_sha: true
-```
+          registry_hostname: 'docker.io'
+          include_commit_sha: 'true'
+      - name: Upload Image to Registry
+        run: echo "Upload image ${{ steps.build.outputs.tag }}:${{ steps.build.outputs.image_tag }} to registry."
